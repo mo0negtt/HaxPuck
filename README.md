@@ -1,4 +1,4 @@
-# ⚡ HaxPuck "Modded"
+# ⚡ HaxPuck
 ---
 
 <img width="1315" height="685" alt="HaxPuck-1" src="https://github.com/user-attachments/assets/81197630-11ca-4548-9508-839cb54746c0" />
