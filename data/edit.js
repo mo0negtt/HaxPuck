@@ -5786,7 +5786,12 @@ function update_savepoint() {
 }
 
 function savepoint() {
-    undo_savepoints.unshift(pprint(stadium));
+    var new_state = pprint(stadium);
+    // Skip if the state is identical to the last savepoint (prevents duplicates)
+    if (undo_savepoints.length > 0 && undo_savepoints[0] === new_state) {
+        return;
+    }
+    undo_savepoints.unshift(new_state);
     undo_savepoints.splice(undo_levels);
     redo_savepoints = [];
     if ($("#button_undo img").length) {
