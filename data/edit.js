@@ -541,7 +541,8 @@ $(function () {
         pan_offset[0] = worldX - mouseX / zoom - canvas_rect[0];
         pan_offset[1] = worldY - mouseY / zoom - canvas_rect[1];
 
-        modified();
+        // Zoom/pan are view operations, not data changes - don't create undo savepoints
+        queue_render();
     });
 
     // Minimizing topbar
@@ -4425,6 +4426,9 @@ function handle_move(ev) {
 }
 
 var tool_pan = {
+    name: "pan",
+    cursor: "grab",
+    init: function () {},
     down: function (pt, ev) {
         this.last_mouse = [ev.pageX, ev.pageY];
     },
